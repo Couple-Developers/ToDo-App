@@ -1,0 +1,240 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif;
+  }
+  
+  body {
+  /* Updated Background with new gradient */
+  background: linear-gradient(
+  135deg,
+  rgba(44, 62, 80, 1) 0%,
+  rgba(52, 73, 94, 1) 50%,
+  rgba(44, 62, 80, 1) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  }
+  
+  .todo-app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 520px;
+  background: #2C3E50; /* Deep Blue background for better contrast */
+  text-align: center;
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
+  animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Heading */
+  h1 {
+  margin-bottom: 30px;
+  color: #ECF0F1; /* Light Gray for better readability */
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+  }
+  
+  h1::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #1ABC9C, #16A085); /* Teal gradient underline */
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  }
+  
+  /* Completed ToDo Items */
+  .complete {
+  text-decoration: line-through;
+  opacity: 0.6;
+  }
+  
+  .todo-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  }
+  
+  .todo-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 2px solid #1ABC9C; /* Teal border */
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  background: transparent;
+  color: #ECF0F1; /* Light Gray text */
+  font-size: 16px;
+  transition: border 0.3s ease;
+  }
+  
+  .todo-input::placeholder {
+  color: #BDC3C7; /* Slightly darker placeholder */
+  }
+  
+  .todo-input:focus {
+  border-color: #16A085; /* Darker Teal on focus */
+  }
+  
+  .todo-button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(90deg, #1ABC9C, #16A085); /* Teal gradient */
+  color: #ffffff;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .todo-button:hover {
+  background: linear-gradient(90deg, #16A085, #1ABC9C); /* Reversed Teal gradient */
+  transform: translateY(-2px);
+  }
+  
+  .todo-button:active {
+  transform: translateY(0);
+  }
+  
+  .todo-button.edit {
+  background: linear-gradient(90deg, #9B59B6, #8E44AD); /* Purple gradient */
+  padding: 14px 22px;
+  }
+  
+  .todo-button.edit:hover {
+  background: linear-gradient(90deg, #8E44AD, #9B59B6); /* Reversed Purple gradient */
+  }
+  
+  /* ToDo Items Container */
+  .todo-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+  }
+  
+  /* Individual ToDo Row */
+  .todo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1ABC9C, #16A085); /* Default Teal gradient */
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  margin-bottom: 15px;
+  }
+  
+  .todo-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Alternate Backgrounds for ToDo Rows */
+  .todo-row:nth-child(4n + 1) {
+  background: linear-gradient(135deg, #E74C3C, #C0392B); /* Soft Coral gradient */
+  }
+  
+  .todo-row:nth-child(4n + 2) {
+  background: linear-gradient(135deg, #F1C40F, #D4AC0D); /* Sunny Yellow gradient */
+  }
+  
+  .todo-row:nth-child(4n + 3) {
+  background: linear-gradient(135deg, #9B59B6, #8E44AD); /* Bright Purple gradient */
+  }
+  
+  .todo-row:nth-child(4n + 4) {
+  background: linear-gradient(135deg, #1ABC9C, #16A085); /* Teal gradient */
+  }
+  
+  /* Icons */
+  .icons {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  gap: 10px;
+  transition: color 0.3s ease;
+  }
+  
+  .icons:hover .delete-icon {
+  color: #E74C3C; /* Red on hover */
+  }
+  
+  .icons:hover .edit-icon {
+  color: #F1C40F; /* Yellow on hover */
+  }
+  
+  .delete-icon,
+  .edit-icon {
+  color: #ffffff;
+  }
+  
+  /* Scrollbar Styling for ToDo Container */
+  .todo-container::-webkit-scrollbar {
+  width: 6px;
+  }
+  
+  .todo-container::-webkit-scrollbar-thumb {
+  background: #1ABC9C; /* Teal scrollbar thumb */
+  border-radius: 3px;
+  }
+  
+  .todo-container::-webkit-scrollbar-track {
+  background: transparent;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+  .todo-app {
+  width: 100%;
+  margin: 20px;
+  padding: 30px 20px;
+  }
+  
+  .todo-input,
+  .todo-button {
+  font-size: 14px;
+  padding: 12px 16px;
+  }
+  
+  h1 {
+  font-size: 28px;
+  }
+  
+  .todo-row {
+  padding: 12px 16px;
+  }
+  
+  .icons {
+  font-size: 18px;
+  }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+  from {
+  opacity: 0;
+  transform: translateY(-20px);
+  }
+  to {
+  opacity: 1;
+  transform: translateY(0);
+  }
+  }
